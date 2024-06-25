@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="qr_code_assets" inherit_id="assets_backend_legacy_lazy">
+            <xpath expr="." position="inside">
+                <!-- Thêm thư viện jsQR -->
+                <script type="text/javascript" src="/QL_NhanVien/static/src/js/jsQR-master/dist/jsQR.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

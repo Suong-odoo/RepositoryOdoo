@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Định nghĩa báo cáo cho Employee QR Code -->
+        <report
+            id="report_qr_code_badge"
+            model="ql_nhanvien.employee"
+            string="Employee QR Code"
+            report_type="qweb-pdf"
+            name="QL_NhanVien.report_qr_code_badge"
+            file="QL_NhanVien.report_qr_code_badge_template"
+        />
+
+        <!-- Định nghĩa view QWeb cho báo cáo -->
+        <template id="report_qr_code_badge_template">
+            <t t-name="QL_NhanVien.report_qr_code_badge_template">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>QR Code for Employee</h2>
+                        <div>
+                            <strong>Mã NV:</strong> <span t-field="doc.employee_id"/>
+                        </div>
+                        <div>
+                            <strong>Họ và tên:</strong> <span t-field="doc.name"/>
+                        </div>
+                        <div>
+                            <strong>Mã PIN:</strong> <span t-field="doc.pin_code"/>
+                        </div>
+                        <div>
+                            <strong>Số thẻ:</strong> <span t-field="doc.card_number"/>
+                        </div>
+                        <div>
+                            <strong>QR Code:</strong><br/>
+                            <img t-att-src="'data:image/png;base64,%s' % doc.qr_code_image" style="width:200px;height:200px;"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
